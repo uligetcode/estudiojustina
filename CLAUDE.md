@@ -130,6 +130,52 @@ Los archivos en `assets/logos/` siguen esta convención:
 
 ---
 
+## Changelog
+
+### 2026-03-28 — Primera sesión de mejoras post-lanzamiento
+
+**WhatsApp Business**
+- Número actualizado: `5491178260592` (WhatsApp Business oficial)
+- Mensaje inicial: `"Hola! Me gustaría hacer una consulta con el estudio."` — natural, deja apertura para bot de recepción (pendiente de implementar)
+
+**Google Maps**
+- Link oficial de Google Business: `https://share.google/4Beh5J4lklKKfh1wc`
+- Usado en: botón "Ver en Google Maps" de sección Ubicación + item de dirección en Contacto
+- El embed del mapa en `<iframe>` sigue usando URL estándar de Google Maps (share.google no es embebible)
+
+**Sistema de logos**
+- SVGs editados para eliminar `<rect fill="#1C1F2E">` de fondo (isotipo, wordmark, apilado)
+- Isotipo del nav: **inlineado como SVG** en el HTML → usa Playfair Display cargado por la página → J idéntica al diseño original
+- Footer logo apilado: también inlineado
+- Nav: solo muestra el isotipo circular (wordmark removido del nav)
+- Wordmark aparece grande en el hero como brand statement principal
+- Ver regla en sección "Sistema de logos" más arriba
+
+**Foto**
+- `assets/fotos/foto-a.jpeg` en sección "Sobre el Estudio" (antes sin imagen)
+- Fotos renombradas de "WhatsApp Image..." a `foto-a.jpeg` … `foto-j.jpeg`
+
+**Nueva sección: Ubicación**
+- Franja entre FAQ y Contacto
+- Split: info institucional (dirección, zona, horario) + mapa prominente
+- "En el corazón del microcentro porteño, a pasos del Palacio de Tribunales"
+- CTA "Ver en Google Maps" → link oficial de Google Business
+- Mapa movido de fondo de Contacto a esta nueva sección
+- Agregado "Ubicación" al menú de navegación
+
+**Formulario de contacto**
+- Formspree ID: `xpqoqbnr` (cuenta: `ulises.silva@estudiojustina.com`)
+- CC automático a: `elizabeth.silva@estudiojustina.com`
+- Asunto automático: "Nueva consulta — Justina Abogados"
+- Submit vía AJAX: no redirige a Formspree, muestra confirmación inline
+- Estado de éxito: "Consulta recibida / 24hs hábiles"
+
+**Favicon**
+- Archivo: `favicon.png` en raíz del repo (isotipo circular con J)
+- También declarado como `apple-touch-icon`
+
+---
+
 ## Stack técnico
 
 - HTML5 + CSS3 + JavaScript vanilla (sin frameworks, sin build tools)
