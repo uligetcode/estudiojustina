@@ -201,16 +201,10 @@
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      gap: 10px;
     }
     .nav-logo-isotipo {
-      height: 48px;
-      width: auto;
-      display: block;
-    }
-    .nav-logo-wordmark {
-      height: 44px;
-      width: auto;
+      height: 52px;
+      width: 52px;
       display: block;
     }
 
@@ -346,6 +340,38 @@
         linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
       background-size: 64px 64px;
       pointer-events: none;
+    }
+
+    .hero-wordmark {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 32px;
+      animation: fadeSlideUp 0.6s ease both;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-wordmark-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+    .hero-wordmark-rule {
+      display: block;
+      height: 1px;
+      width: 100%;
+      margin: 10px 0 8px;
+      background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-bright) 60%, transparent);
+    }
+    .hero-wordmark-sub {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.38em;
+      color: var(--gold);
+      text-transform: uppercase;
     }
 
     .hero-eyebrow {
@@ -1398,8 +1424,29 @@
     <div class="container">
       <div class="nav-inner">
         <a href="#hero" class="nav-logo" aria-label="Justina Abogados – Inicio">
-          <img src="assets/logos/isotipo-fondo-navy.svg" alt="" class="nav-logo-isotipo" aria-hidden="true" />
-          <img src="assets/logos/wordmark-fondo-navy.svg" alt="Justina Abogados" class="nav-logo-wordmark" />
+          <svg class="nav-logo-isotipo" viewBox="0 0 164 164" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="nav-bg" cx="42%" cy="36%" r="66%" gradientUnits="objectBoundingBox">
+                <stop offset="0%" stop-color="#252A3D"/>
+                <stop offset="100%" stop-color="#1C1F2E"/>
+              </radialGradient>
+              <linearGradient id="nav-gr" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#DFC08A"/>
+                <stop offset="50%" stop-color="#C9A96E"/>
+                <stop offset="100%" stop-color="#9B7D4A"/>
+              </linearGradient>
+            </defs>
+            <g transform="translate(32,32)">
+              <circle cx="50" cy="50" r="47" fill="url(#nav-bg)"/>
+              <circle cx="50" cy="50" r="45.5" fill="none" stroke="url(#nav-gr)" stroke-width="1.4"/>
+              <circle cx="50" cy="50" r="38.5" fill="none" stroke="#C9A96E" stroke-width="0.55" opacity="0.38"/>
+              <polygon points="50,3.5 52.5,6 50,8.5 47.5,6" fill="#C9A96E"/>
+              <polygon points="50,91.5 52.5,94 50,96.5 47.5,94" fill="#C9A96E"/>
+              <polygon points="3.5,50 6,52.5 8.5,50 6,47.5" fill="#C9A96E"/>
+              <polygon points="91.5,50 94,52.5 96.5,50 94,47.5" fill="#C9A96E"/>
+              <text x="50" y="63" font-family="'Playfair Display',Georgia,serif" font-size="46" font-weight="700" fill="#F7F4EF" text-anchor="middle">J</text>
+            </g>
+          </svg>
         </a>
         <div class="nav-links" role="list">
           <a href="#sobre">Sobre el Estudio</a>
@@ -1440,6 +1487,11 @@
   <section id="hero" aria-label="Portada">
     <!-- Left: headline + CTA -->
     <div class="hero-left">
+      <div class="hero-wordmark" aria-label="Justina Abogados">
+        <span class="hero-wordmark-title">JUSTINA</span>
+        <span class="hero-wordmark-rule" aria-hidden="true"></span>
+        <span class="hero-wordmark-sub">ABOGADOS</span>
+      </div>
       <p class="hero-eyebrow">Estudio Jurídico · Buenos Aires</p>
       <h1 class="hero-title">
         Defendemos sus <em>derechos</em> con veinte años de trayectoria
