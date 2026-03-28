@@ -204,12 +204,12 @@
       gap: 10px;
     }
     .nav-logo-isotipo {
-      height: 52px;
+      height: 48px;
       width: auto;
       display: block;
     }
     .nav-logo-wordmark {
-      height: 38px;
+      height: 44px;
       width: auto;
       display: block;
     }
@@ -1291,6 +1291,29 @@
     }
 
     /* ============================================================
+       FORM SUCCESS STATE
+    ============================================================ */
+    .form-success {
+      display: none;
+      padding: 56px 24px;
+      text-align: center;
+    }
+    .form-success.visible { display: block; }
+    .form-success-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      color: var(--gold);
+    }
+    .form-success h3 { color: var(--cream); margin-bottom: 10px; font-size: 1.4rem; }
+    .form-success p { color: rgba(247,244,239,0.62); font-size: 0.93rem; line-height: 1.7; }
+
+    /* ============================================================
        WHATSAPP FLOAT
     ============================================================ */
     .wa-float {
@@ -1375,8 +1398,8 @@
     <div class="container">
       <div class="nav-inner">
         <a href="#hero" class="nav-logo" aria-label="Justina Abogados – Inicio">
-          <img src="assets/logos/isotipo-fondo-navy.svg" alt="" class="nav-logo-isotipo" aria-hidden="true" />
-          <img src="assets/logos/wordmark-fondo-navy.svg" alt="Justina Abogados" class="nav-logo-wordmark" />
+          <img src="assets/logos-png/justina-abogados-isotipo-navy.png" alt="" class="nav-logo-isotipo" aria-hidden="true" />
+          <img src="assets/logos-png/justina-abogados-wordmark-navy.png" alt="Justina Abogados" class="nav-logo-wordmark" />
         </a>
         <div class="nav-links" role="list">
           <a href="#sobre">Sobre el Estudio</a>
@@ -1979,7 +2002,6 @@
             -->
             <input type="hidden" name="_cc" value="elizabeth.silva@estudiojustina.com" />
             <input type="hidden" name="_subject" value="Nueva consulta — Justina Abogados" />
-            <input type="hidden" name="_next" value="https://estudiojustina.com/#contacto" />
             <div class="fg-row">
               <div class="fg">
                 <label for="nombre">Nombre *</label>
@@ -2013,6 +2035,14 @@
             </div>
             <button type="submit" class="btn-submit">Enviar consulta</button>
           </form>
+
+          <div class="form-success" id="formSuccess" role="alert">
+            <div class="form-success-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Consulta recibida</h3>
+            <p>Nos comunicaremos con usted dentro de las 24 horas hábiles.<br>Revise también su carpeta de spam.</p>
+          </div>
         </div>
 
       </div>
@@ -2186,14 +2216,35 @@
     });
 
     /* ============================================================
-       CONTACT FORM — validation feedback
+       CONTACT FORM — AJAX submission (no redirect)
     ============================================================ */
     const form = document.getElementById('contactForm');
     if (form) {
-      form.addEventListener('submit', function(e) {
-        if (this.action.includes('XXXXXXXX')) {
-          e.preventDefault();
-          alert('Para activar el formulario, regístrese en https://formspree.io y reemplace XXXXXXXX con su ID de formulario en el atributo action.');
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = form.querySelector('.btn-submit');
+        const successEl = document.getElementById('formSuccess');
+        btn.textContent = 'Enviando...';
+        btn.disabled = true;
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            successEl.classList.add('visible');
+          } else {
+            btn.textContent = 'Enviar consulta';
+            btn.disabled = false;
+            btn.style.background = '#c0392b';
+            btn.textContent = 'Error al enviar. Intente nuevamente.';
+            setTimeout(() => { btn.style.background = ''; btn.textContent = 'Enviar consulta'; }, 3500);
+          }
+        } catch {
+          btn.textContent = 'Enviar consulta';
+          btn.disabled = false;
         }
       });
     }
