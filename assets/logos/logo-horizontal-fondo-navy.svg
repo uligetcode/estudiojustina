@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 334.0 144.0"
+     width="334.0" height="144.0">
+  <style><![CDATA[@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600&display=swap');]]></style>
+  <rect x="0" y="0" width="334.0" height="144.0" fill="#1C1F2E"/>
+  <g transform="translate(32,32)">
+    <defs>
+      <radialGradient id="bg-hd" cx="42%" cy="36%" r="66%" gradientUnits="objectBoundingBox">
+        <stop offset="0%" stop-color="#252A3D"/>
+        <stop offset="100%" stop-color="#1C1F2E"/>
+      </radialGradient>
+      <linearGradient id="gr-hd" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#DFC08A"/>
+        <stop offset="50%" stop-color="#C9A96E"/>
+        <stop offset="100%" stop-color="#9B7D4A"/>
+      </linearGradient>
+    </defs>
+    <g transform="translate(5,5) scale(0.7)">
+      <circle cx="50" cy="50" r="47" fill="url(#bg-hd)"/>
+      <circle cx="50" cy="50" r="45.5" fill="none" stroke="url(#gr-hd)" stroke-width="1.4"/>
+      <circle cx="50" cy="50" r="38.5" fill="none" stroke="#C9A96E" stroke-width="0.55" opacity="0.38"/>
+      <polygon points="50,3.5 52.5,6 50,8.5 47.5,6" fill="#C9A96E"/>
+      <polygon points="50,91.5 52.5,94 50,96.5 47.5,94" fill="#C9A96E"/>
+      <polygon points="3.5,50 6,52.5 8.5,50 6,47.5" fill="#C9A96E"/>
+      <polygon points="91.5,50 94,52.5 96.5,50 94,47.5" fill="#C9A96E"/>
+      <text x="50" y="63" font-family="'Playfair Display',Georgia,serif"
+            font-size="46" font-weight="700" fill="#F7F4EF" text-anchor="middle">J</text>
+    </g>
+    <line x1="83" y1="19" x2="83" y2="61" stroke="#C9A96E" stroke-width="0.8" opacity="0.65"/>
+    <text x="94" y="41" font-family="'Playfair Display',Georgia,serif"
+          font-size="28" font-weight="700" fill="#F7F4EF" letter-spacing="0.5">JUSTINA</text>
+    <text x="94" y="59" font-family="'Source Sans 3','Helvetica Neue',Arial,sans-serif"
+          font-size="10.5" font-weight="600" fill="#C9A96E" letter-spacing="3.2">ABOGADOS</text>
+  </g>
+</svg>

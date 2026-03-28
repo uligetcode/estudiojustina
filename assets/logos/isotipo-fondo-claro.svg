@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 164.0 164.0"
+     width="164.0" height="164.0">
+  <style><![CDATA[@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600&display=swap');]]></style>
+  <rect x="0" y="0" width="164.0" height="164.0" fill="#EDE8E0"/>
+  <g transform="translate(32,32)">
+    <defs>
+      <radialGradient id="bg-il" cx="42%" cy="36%" r="66%" gradientUnits="objectBoundingBox">
+        <stop offset="0%" stop-color="#252A3D"/>
+        <stop offset="100%" stop-color="#1C1F2E"/>
+      </radialGradient>
+      <linearGradient id="gr-il" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#DFC08A"/>
+        <stop offset="50%" stop-color="#C9A96E"/>
+        <stop offset="100%" stop-color="#9B7D4A"/>
+      </linearGradient>
+    </defs>
+    <circle cx="50" cy="50" r="47" fill="url(#bg-il)"/>
+    <circle cx="50" cy="50" r="45.5" fill="none" stroke="url(#gr-il)" stroke-width="1.4"/>
+    <circle cx="50" cy="50" r="38.5" fill="none" stroke="#C9A96E" stroke-width="0.55" opacity="0.38"/>
+    <polygon points="50,3.5 52.5,6 50,8.5 47.5,6" fill="#C9A96E"/>
+    <polygon points="50,91.5 52.5,94 50,96.5 47.5,94" fill="#C9A96E"/>
+    <polygon points="3.5,50 6,52.5 8.5,50 6,47.5" fill="#C9A96E"/>
+    <polygon points="91.5,50 94,52.5 96.5,50 94,47.5" fill="#C9A96E"/>
+    <text x="50" y="63" font-family="'Playfair Display',Georgia,serif"
+          font-size="46" font-weight="700" fill="#F7F4EF" text-anchor="middle">J</text>
+  </g>
+</svg>
