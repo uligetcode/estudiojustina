@@ -317,7 +317,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 150px 72px 120px 60px;
+      padding: 110px 72px 80px 60px;
       position: relative;
       overflow: hidden;
     }
@@ -345,14 +345,14 @@
     .hero-wordmark {
       display: flex;
       flex-direction: column;
-      margin-bottom: 32px;
+      margin-bottom: 22px;
       animation: fadeSlideUp 0.6s ease both;
       position: relative;
       z-index: 1;
     }
     .hero-wordmark-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
       font-weight: 700;
       color: var(--cream);
       letter-spacing: 0.06em;
@@ -362,12 +362,12 @@
       display: block;
       height: 1px;
       width: 100%;
-      margin: 10px 0 8px;
+      margin: 8px 0 7px;
       background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-bright) 60%, transparent);
     }
     .hero-wordmark-sub {
       font-family: 'Source Sans 3', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.38em;
       color: var(--gold);
@@ -1099,7 +1099,7 @@
       margin-bottom: 30px;
     }
     .footer-logo-img {
-      height: 56px;
+      height: 100px;
       width: auto;
       display: block;
       margin-bottom: 4px;
@@ -2109,7 +2109,40 @@
     <div class="container">
       <div class="footer-top">
         <div>
-          <img src="assets/logos/logo-apilado-fondo-navy.svg" alt="Justina Abogados" class="footer-logo-img" />
+          <svg class="footer-logo-img" viewBox="0 0 264 216" xmlns="http://www.w3.org/2000/svg" aria-label="Justina Abogados" role="img">
+            <defs>
+              <radialGradient id="ft-bg" cx="42%" cy="36%" r="66%" gradientUnits="objectBoundingBox">
+                <stop offset="0%" stop-color="#252A3D"/>
+                <stop offset="100%" stop-color="#1C1F2E"/>
+              </radialGradient>
+              <linearGradient id="ft-gr" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#DFC08A"/>
+                <stop offset="50%" stop-color="#C9A96E"/>
+                <stop offset="100%" stop-color="#9B7D4A"/>
+              </linearGradient>
+              <linearGradient id="ft-rl" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#9B7D4A" stop-opacity="0"/>
+                <stop offset="28%" stop-color="#C9A96E"/>
+                <stop offset="72%" stop-color="#DFC08A"/>
+                <stop offset="100%" stop-color="#9B7D4A" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <g transform="translate(32,32)">
+              <g transform="translate(60,5) scale(0.8)">
+                <circle cx="50" cy="50" r="47" fill="url(#ft-bg)"/>
+                <circle cx="50" cy="50" r="45.5" fill="none" stroke="url(#ft-gr)" stroke-width="1.4"/>
+                <circle cx="50" cy="50" r="38.5" fill="none" stroke="#C9A96E" stroke-width="0.55" opacity="0.38"/>
+                <polygon points="50,3.5 52.5,6 50,8.5 47.5,6" fill="#C9A96E"/>
+                <polygon points="50,91.5 52.5,94 50,96.5 47.5,94" fill="#C9A96E"/>
+                <polygon points="3.5,50 6,52.5 8.5,50 6,47.5" fill="#C9A96E"/>
+                <polygon points="91.5,50 94,52.5 96.5,50 94,47.5" fill="#C9A96E"/>
+                <text x="50" y="63" font-family="'Playfair Display',Georgia,serif" font-size="46" font-weight="700" fill="#F7F4EF" text-anchor="middle">J</text>
+              </g>
+              <line x1="65" y1="95" x2="135" y2="95" stroke="url(#ft-rl)" stroke-width="1.2"/>
+              <text x="100" y="118" font-family="'Playfair Display',Georgia,serif" font-size="24" font-weight="700" fill="#F7F4EF" text-anchor="middle" letter-spacing="0.5">JUSTINA</text>
+              <text x="100" y="138" font-family="'Source Sans 3',Arial,sans-serif" font-size="10" font-weight="600" fill="#C9A96E" text-anchor="middle" letter-spacing="3.2">ABOGADOS</text>
+            </g>
+          </svg>
           <p class="footer-tagline">Estudio jurídico integral · CABA y Provincia de Buenos Aires</p>
         </div>
         <nav class="footer-nav" aria-label="Links del footer">
