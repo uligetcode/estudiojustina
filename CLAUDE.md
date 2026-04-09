@@ -176,6 +176,41 @@ Los archivos en `assets/logos/` siguen esta convención:
 
 ---
 
+### 2026-04-09 — Segunda sesión de mejoras
+
+**Áreas de práctica — nuevo contenido**
+- Orden nuevo: Daños, Salud, Familia, Sucesorio, Laboral, Societario
+- "Amparos de Salud" → "Derecho a la Salud" (nuevo contenido y nombre)
+- "Derecho Comercial" → "Derecho Societario" (foco en IGJ y estructura societaria)
+- "Cartas Documento" → "Derecho Sucesorio" (testamentos, donaciones, inscripción de bienes)
+- Derecho de Familia: texto actualizado con compensaciones económicas y enfoque interdisciplinario
+- Derecho Laboral: texto actualizado con SECLO, Ministerio de Trabajo, intercambio telegráfico
+
+**Cards expandibles en servicios**
+- Cada card muestra resumen corto + botón "Ver más" que expande el texto completo
+- Animación CSS `max-height` transition (0.48s)
+- Precios (`svc-fee`) eliminados de todas las cards
+- Badge "Primera consulta gratuita · Sin compromiso" debajo del grid
+- Dropdown del formulario de contacto actualizado con las nuevas áreas
+
+**Reducción de "+20 años" repetitivo**
+- Meta description: "con amplia trayectoria profesional"
+- OG description: "Asesoramiento jurídico integral... Visión estratégica del conflicto."
+- "Por Qué Elegirnos": "Trayectoria probada en el fuero porteño"
+- Schema.org JSON-LD: mantenido sin cambios
+
+**Testimonios — swipe táctil y mouse drag**
+- Touch: swipe horizontal > 50px avanza/retrocede slide + resetea autoplay
+- Mouse: drag horizontal > 50px igual comportamiento
+- Cursor `grab`/`grabbing` visual en el carrusel
+
+**Animación scroll en servicios — reveal suave**
+- Observer dedicado para `.svc-reveal` (threshold 0.15, rootMargin -60px)
+- Delays escalonados por card: svc-d0 (0s) → svc-d5 (0.60s)
+- Evita el efecto de "aparición súbita" que ocurría con el grid de columnas múltiples
+
+---
+
 ## Stack técnico
 
 - HTML5 + CSS3 + JavaScript vanilla (sin frameworks, sin build tools)
