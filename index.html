@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Justina Abogados | Estudio Jurídico CABA – Derecho de Daños, Familia y Laboral</title>
-  <meta name="description" content="Estudio jurídico integral en Buenos Aires con más de 20 años de experiencia. Especialistas en derecho de daños, familia, laboral, comercial y amparos de salud. Consulta personalizada." />
+  <meta name="description" content="Estudio jurídico integral en Buenos Aires con amplia trayectoria profesional. Especialistas en derecho de daños, familia, laboral, sucesorio y amparos de salud. Primera consulta gratuita." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Justina Abogados | Estudio Jurídico CABA" />
-  <meta property="og:description" content="Más de 20 años representando personas y empresas en CABA y Provincia de Buenos Aires. Visión integral del conflicto jurídico." />
+  <meta property="og:description" content="Asesoramiento jurídico integral en CABA y Provincia de Buenos Aires. Visión estratégica del conflicto. Primera consulta gratuita." />
   <meta property="og:url" content="https://estudiojustina.com" />
   <meta property="og:type" content="website" />
 
@@ -757,11 +757,8 @@
     .svc-card:hover .svc-icon   { color: var(--gold); }
     .svc-card:hover h3          { color: var(--cream); }
     .svc-card:hover .svc-desc   { color: rgba(247,244,239,0.65); }
-    .svc-card:hover .svc-fee    {
-      background: rgba(201,169,110,0.12);
-      color: var(--gold-bright);
-      border-color: rgba(201,169,110,0.28);
-    }
+    .svc-card:hover .svc-toggle-btn { color: var(--gold-bright); }
+    .svc-card:hover .svc-full { color: rgba(247,244,239,0.65); border-top-color: rgba(201,169,110,0.28); }
 
     .svc-icon {
       color: var(--burgundy);
@@ -781,18 +778,76 @@
       margin-bottom: 22px;
       transition: color var(--tr);
     }
-    .svc-fee {
-      display: inline-block;
+    /* Expandable card */
+    .svc-expand {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.48s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .svc-card.expanded .svc-expand { max-height: 420px; }
+    .svc-full {
+      font-size: 0.86rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+      padding-top: 14px;
+      border-top: 1px solid var(--border-gold);
+      margin-top: 6px;
+      transition: color var(--tr), border-top-color var(--tr);
+    }
+    .svc-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
       font-size: 10.5px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 6px 14px;
-      border: 1px solid var(--border-gold);
       color: var(--gold-dim);
-      border-radius: 1px;
-      transition: all var(--tr);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: 'Source Sans 3', sans-serif;
+      transition: color var(--tr-fast);
     }
+    .svc-toggle-btn:hover { color: var(--burgundy); }
+    .svc-toggle-btn svg { transition: transform 0.32s ease; }
+    .svc-card.expanded .svc-toggle-btn svg { transform: rotate(180deg); }
+
+    /* "Primera consulta" note */
+    .svc-free-note {
+      text-align: center;
+      padding-top: 52px;
+    }
+    .svc-free-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      border: 1px solid var(--border-gold);
+      padding: 11px 28px;
+      border-radius: 1px;
+    }
+    .svc-free-badge svg { color: var(--gold); flex-shrink: 0; }
+
+    /* Staggered reveal for service cards */
+    .svc-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.72s ease, transform 0.72s ease;
+    }
+    .svc-reveal.visible { opacity: 1; transform: translateY(0); }
+    .svc-d0 { transition-delay: 0s; }
+    .svc-d1 { transition-delay: 0.12s; }
+    .svc-d2 { transition-delay: 0.24s; }
+    .svc-d3 { transition-delay: 0.36s; }
+    .svc-d4 { transition-delay: 0.48s; }
+    .svc-d5 { transition-delay: 0.60s; }
 
     /* ============================================================
        WHY US
@@ -852,7 +907,10 @@
     }
     .testi-track-wrap {
       overflow: hidden;
+      cursor: grab;
+      user-select: none;
     }
+    .testi-track-wrap.dragging { cursor: grabbing; }
     .testi-track {
       display: flex;
       transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1630,8 +1688,9 @@
     </div>
 
     <div class="services-grid" role="list">
+
       <!-- Daños -->
-      <article class="svc-card reveal" role="listitem">
+      <article class="svc-card svc-reveal svc-d0" role="listitem">
         <div class="svc-icon" aria-hidden="true">
           <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -1639,12 +1698,36 @@
           </svg>
         </div>
         <h3>Derecho de Daños</h3>
-        <p class="svc-desc">Accidentes de tránsito, en vía pública y mala praxis profesional. Reclamación de indemnizaciones ante aseguradoras y en sede judicial en Buenos Aires.</p>
-        <span class="svc-fee">20–30% a resultado</span>
+        <p class="svc-desc">Accidentes, incumplimientos y todo tipo de perjuicios. Evaluamos tu caso y trabajamos para obtener la reparación que merecés.</p>
+        <div class="svc-expand" aria-hidden="true">
+          <p class="svc-full">Si sufriste un accidente, un incumplimiento contractual o cualquier situación que te causó un perjuicio, te acompañamos en todo el proceso. Analizamos tu caso en detalle: evaluamos si tenés derecho a reclamar, identificamos al responsable y trabajamos para que la indemnización refleje el daño real que sufriste. Nos desempeñamos en casos de accidentes de tránsito, accidentes en la vía pública, mala praxis profesional, conflictos entre vecinos, incumplimientos contractuales y problemas vinculados al derecho del consumidor.</p>
+        </div>
+        <button class="svc-toggle-btn" aria-expanded="false">
+          <span class="svc-toggle-text">Ver más</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </article>
+
+      <!-- Salud -->
+      <article class="svc-card svc-reveal svc-d1" role="listitem">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 12 6 12 9 4 12 20 15 10 18 12 21 12"/>
+          </svg>
+        </div>
+        <h3>Derecho a la Salud</h3>
+        <p class="svc-desc">Actuamos con rapidez ante la negativa de cobertura de prepagas, obras sociales o programas estatales.</p>
+        <div class="svc-expand" aria-hidden="true">
+          <p class="svc-full">Sabemos que cuando se trata de salud, el tiempo no puede esperar. Por eso actuamos con rapidez ante la negativa de cobertura de prepagas, obras sociales o programas estatales. Te ayudamos a recuperar tu cobertura médica, acceder a tratamientos negados y obtener los medicamentos e insumos que necesitás, a través de reclamos administrativos, amparos y medidas cautelares.</p>
+        </div>
+        <button class="svc-toggle-btn" aria-expanded="false">
+          <span class="svc-toggle-text">Ver más</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
       </article>
 
       <!-- Familia -->
-      <article class="svc-card reveal reveal-d1" role="listitem">
+      <article class="svc-card svc-reveal svc-d2" role="listitem">
         <div class="svc-icon" aria-hidden="true">
           <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -1654,12 +1737,40 @@
           </svg>
         </div>
         <h3>Derecho de Familia</h3>
-        <p class="svc-desc">Divorcios consensuales y contradictorios, reclamos de alimentos, régimen de comunicación y sucesiones. Acompañamiento en cada etapa del proceso.</p>
-        <span class="svc-fee">Consultar honorarios</span>
+        <p class="svc-desc">Los conflictos familiares son de los más sensibles. Los atravesamos juntos, con empatía y profesionalismo.</p>
+        <div class="svc-expand" aria-hidden="true">
+          <p class="svc-full">Te asesoramos en divorcios —tanto de común acuerdo como contenciosos—, acuerdos de alimentos y régimen de visitas, compensaciones económicas y división de bienes. Trabajamos con una mirada interdisciplinaria que incorpora herramientas de la psicología y la sociología, porque entendemos que cada familia es única.</p>
+        </div>
+        <button class="svc-toggle-btn" aria-expanded="false">
+          <span class="svc-toggle-text">Ver más</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </article>
+
+      <!-- Sucesorio -->
+      <article class="svc-card svc-reveal svc-d3" role="listitem">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <line x1="10" y1="9" x2="8" y2="9"/>
+          </svg>
+        </div>
+        <h3>Derecho Sucesorio</h3>
+        <p class="svc-desc">Planificar el futuro de tu patrimonio es un acto de cuidado hacia los tuyos. También gestionamos procesos sucesorios en curso.</p>
+        <div class="svc-expand" aria-hidden="true">
+          <p class="svc-full">Te orientamos en la elaboración de testamentos, donaciones y toda la planificación hereditaria. Si ya estás en medio de un proceso sucesorio, nos encargamos de las presentaciones judiciales necesarias hasta lograr la inscripción de los bienes en los registros correspondientes.</p>
+        </div>
+        <button class="svc-toggle-btn" aria-expanded="false">
+          <span class="svc-toggle-text">Ver más</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
       </article>
 
       <!-- Laboral -->
-      <article class="svc-card reveal reveal-d2" role="listitem">
+      <article class="svc-card svc-reveal svc-d4" role="listitem">
         <div class="svc-icon" aria-hidden="true">
           <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
@@ -1667,48 +1778,44 @@
           </svg>
         </div>
         <h3>Derecho Laboral</h3>
-        <p class="svc-desc">Representación de trabajadores y empresas ante el fuero laboral. Despidos, liquidaciones, accidentes de trabajo y conflictos colectivos en CABA y GBA.</p>
-        <span class="svc-fee">20% a resultado</span>
+        <p class="svc-desc">Ya seas trabajador o empleador, te asesoramos para defender tus derechos con estrategia y conocimiento actualizado.</p>
+        <div class="svc-expand" aria-hidden="true">
+          <p class="svc-full">Te acompañamos en el intercambio telegráfico, audiencias en el SECLO y el Ministerio de Trabajo, y en todas las instancias judiciales que sean necesarias.</p>
+        </div>
+        <button class="svc-toggle-btn" aria-expanded="false">
+          <span class="svc-toggle-text">Ver más</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
       </article>
 
-      <!-- Comercial -->
-      <article class="svc-card reveal reveal-d1" role="listitem">
+      <!-- Societario -->
+      <article class="svc-card svc-reveal svc-d5" role="listitem">
         <div class="svc-icon" aria-hidden="true">
           <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h3>Derecho Comercial</h3>
-        <p class="svc-desc">Asesoramiento a empresas en contratos comerciales, litigios societarios y gestión de riesgo jurídico. Redacción, revisión y negociación de contratos.</p>
-        <span class="svc-fee">1–5% del objeto</span>
+        <h3>Derecho Societario</h3>
+        <p class="svc-desc">Elegí la estructura jurídica más conveniente para tu emprendimiento y gestioná conflictos entre socios con claridad y criterio.</p>
+        <div class="svc-expand" aria-hidden="true">
+          <p class="svc-full">Constituir una sociedad o gestionar un conflicto entre socios requiere claridad y criterio. Te ayudamos a elegir la estructura jurídica más conveniente para tu emprendimiento, a llevar adelante la constitución e inscripción ante la IGJ, y a analizar responsabilidades ante cualquier conflicto societario.</p>
+        </div>
+        <button class="svc-toggle-btn" aria-expanded="false">
+          <span class="svc-toggle-text">Ver más</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
       </article>
 
-      <!-- Amparos -->
-      <article class="svc-card reveal reveal-d2" role="listitem">
-        <div class="svc-icon" aria-hidden="true">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-          </svg>
-        </div>
-        <h3>Amparos de Salud</h3>
-        <p class="svc-desc">Acciones de amparo contra obras sociales y prepagas que nieguen coberturas médicas. Medidas cautelares urgentes para proteger el derecho a la salud.</p>
-        <span class="svc-fee">Consultar honorarios</span>
-      </article>
+    </div>
 
-      <!-- Cartas documento -->
-      <article class="svc-card reveal reveal-d3" role="listitem">
-        <div class="svc-icon" aria-hidden="true">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-        </div>
-        <h3>Cartas Documento</h3>
-        <p class="svc-desc">Redacción y gestión de cartas documento para reclamos extrajudiciales, constitución en mora y notificaciones con efectos jurídicos plenos.</p>
-        <span class="svc-fee">Desde $200.000</span>
-      </article>
+    <div class="container">
+      <div class="svc-free-note reveal">
+        <span class="svc-free-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Primera consulta gratuita · Sin compromiso
+        </span>
+      </div>
     </div>
   </section>
 
@@ -1728,8 +1835,8 @@
           <div class="why-icon" aria-hidden="true">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <h3>Más de 20 años de trayectoria</h3>
-          <p>Experiencia probada en litigios civiles, comerciales, laborales y de familia. Conocemos los fueros de Buenos Aires como pocos estudios en CABA.</p>
+          <h3>Trayectoria probada en el fuero porteño</h3>
+          <p>Experiencia en litigios civiles, comerciales, laborales y de familia. Conocemos los fueros de Buenos Aires como pocos estudios en CABA.</p>
         </div>
 
         <div class="why-card reveal reveal-d1">
@@ -2075,12 +2182,12 @@
               <label for="area">Área de consulta</label>
               <select id="area" name="area">
                 <option value="">Seleccione un área</option>
-                <option>Derecho de Daños (accidentes, mala praxis)</option>
-                <option>Derecho de Familia (divorcio, alimentos, sucesiones)</option>
-                <option>Derecho Laboral</option>
-                <option>Derecho Comercial</option>
-                <option>Amparo de Salud</option>
-                <option>Carta Documento</option>
+                <option>Derecho de Daños (accidentes, mala praxis, consumidor)</option>
+                <option>Derecho a la Salud (amparos, cobertura médica)</option>
+                <option>Derecho de Familia (divorcio, alimentos, visitas)</option>
+                <option>Derecho Sucesorio (testamentos, sucesión)</option>
+                <option>Derecho Laboral (trabajadores y empleadores)</option>
+                <option>Derecho Societario (constitución, IGJ, socios)</option>
                 <option>Otro</option>
               </select>
             </div>
@@ -2282,6 +2389,72 @@
     });
 
     startAutoplay();
+
+    /* ============================================================
+       TESTIMONIALS — Touch & mouse swipe
+    ============================================================ */
+    const trackWrap = document.querySelector('.testi-track-wrap');
+    let touchStartX = null;
+    let mouseStartX = null;
+    let isDragging  = false;
+
+    trackWrap.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    trackWrap.addEventListener('touchmove', (e) => {
+      if (touchStartX === null) return;
+      if (Math.abs(e.touches[0].clientX - touchStartX) > 10) e.preventDefault();
+    }, { passive: false });
+
+    trackWrap.addEventListener('touchend', (e) => {
+      if (touchStartX === null) return;
+      const delta = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(delta) > 50) { goTo(delta < 0 ? current + 1 : current - 1); resetAutoplay(); }
+      touchStartX = null;
+    });
+
+    trackWrap.addEventListener('mousedown', (e) => {
+      mouseStartX = e.clientX;
+      isDragging  = true;
+      trackWrap.classList.add('dragging');
+    });
+
+    window.addEventListener('mouseup', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      trackWrap.classList.remove('dragging');
+      if (mouseStartX === null) return;
+      const delta = e.clientX - mouseStartX;
+      if (Math.abs(delta) > 50) { goTo(delta < 0 ? current + 1 : current - 1); resetAutoplay(); }
+      mouseStartX = null;
+    });
+
+    /* ============================================================
+       SERVICE CARDS — Staggered scroll reveal
+    ============================================================ */
+    const svcCards = document.querySelectorAll('.svc-reveal');
+    const svcObs   = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); svcObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '-60px 0px -60px 0px' });
+    svcCards.forEach(el => svcObs.observe(el));
+
+    /* ============================================================
+       SERVICE CARDS — Expand / collapse
+    ============================================================ */
+    document.querySelectorAll('.svc-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card    = btn.closest('.svc-card');
+        const expand  = card.querySelector('.svc-expand');
+        const textEl  = btn.querySelector('.svc-toggle-text');
+        const isOpen  = card.classList.toggle('expanded');
+        btn.setAttribute('aria-expanded', isOpen);
+        expand.setAttribute('aria-hidden', !isOpen);
+        textEl.textContent = isOpen ? 'Ver menos' : 'Ver más';
+      });
+    });
 
     /* ============================================================
        FAQ ACCORDION
