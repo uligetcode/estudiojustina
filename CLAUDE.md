@@ -211,6 +211,25 @@ Los archivos en `assets/logos/` siguen esta convención:
 
 ---
 
+### 2026-04-16 — Tercera sesión: ajustes de redacción
+
+**Tuteo en el hero**
+- "Defendemos sus derechos" → "Defendemos tus derechos"
+
+**Sobre el Estudio**
+- Quitada la palabra "legal" de "todo conflicto legal" → "todo conflicto"
+
+**Servicios — Derecho de Daños**
+- "reparación que merecés" → "reparación integral que merecés"
+
+**FAQ — honorarios a resultado**
+- "lo recuperado, según la complejidad" → "lo reconocido en el acuerdo privado, judicial o por sentencia"
+
+**Menú de navegación**
+- "FAQ" → "Preguntas frecuentes" (en desktop y mobile)
+
+---
+
 ## Stack técnico
 
 - HTML5 + CSS3 + JavaScript vanilla (sin frameworks, sin build tools)
