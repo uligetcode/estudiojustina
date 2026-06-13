@@ -230,6 +230,22 @@ Los archivos en `assets/logos/` siguen esta convención:
 
 ---
 
+### 2026-06-12 — Cuarta sesión: foto y cobertura geográfica
+
+**Foto — Sobre el Estudio**
+- `foto-a.jpeg` → `foto-junio2026.jpeg` (foto más reciente y personal)
+
+**Cobertura ampliada a Santa Cruz y Chubut**
+- Antes: CABA y Provincia de Buenos Aires. Ahora: CABA, Provincia de Buenos Aires, Santa Cruz y Chubut
+- Atención en Santa Cruz/Chubut es remota (videollamada/WhatsApp), igual que ya se manejaba para el interior de la Provincia de Buenos Aires
+- Actualizado en: hero (subtítulo y eyebrow), "Sobre el Estudio" (texto + lista de cobertura), "Por Qué Elegirnos", FAQ, footer, schema.org `areaServed`, `og:description` y `docs/datos-negocio.md`
+- FAQ reformulada: "¿Pueden atenderme si vivo en la Provincia de Buenos Aires?" → "¿Pueden atenderme si vivo fuera de CABA?"
+
+**Hero eyebrow**
+- "Estudio Jurídico · Buenos Aires" → "Estudio Jurídico · 4 Distritos" (refleja la cobertura en 4 jurisdicciones sin listar cada una)
+
+---
+
 ## Stack técnico
 
 - HTML5 + CSS3 + JavaScript vanilla (sin frameworks, sin build tools)
