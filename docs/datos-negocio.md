@@ -12,7 +12,7 @@
 | WhatsApp | +54 11 3796-3321 |
 | Dirección | Cerrito 1054, 5to Piso, CABA (C.P. 1010) |
 | Horario | Lunes a Viernes, 9:00 a 18:00 |
-| Zona de cobertura | CABA y Provincia de Buenos Aires |
+| Zona de cobertura | CABA, Provincia de Buenos Aires, Santa Cruz y Chubut |
 
 ## Redes sociales
 
