@@ -246,6 +246,23 @@ Los archivos en `assets/logos/` siguen esta convención:
 
 ---
 
+### 2026-08-26 — Quinta sesión: redacción del hero y badge en mobile
+
+**Hero — título**
+- "Defendemos tus *derechos* con veinte años de trayectoria" → "Defendemos tus *derechos* con la experiencia que nos da veinte años de trayectoria"
+- El título usa `clamp(2.5rem, 3.8vw, 4rem)`: en mobile solo suma una línea, no se desborda
+
+**Badge "20+ años de ejercicio" — oculto en mobile**
+- Problema: en la sección "Sobre el Estudio", el `.about-badge` (posicionado absoluto) se montaba sobre la foto de Elizabeth al pasar la grilla a una sola columna
+- Fix: `.about-badge { display: none; }` dentro del breakpoint `@media (max-width: 880px)` — antes ahí había `right: 0`, que no alcanzaba
+- En desktop el badge sigue igual
+- El dato de los 20 años no se pierde en mobile: sigue en el hero (`hero-giant-num`) y en la franja de estadísticas
+
+**Pendiente detectado (no resuelto)**
+- La `meta description` del `<head>` todavía menciona "amparos de salud" y "derecho comercial", nombres viejos de las áreas renombradas en la sesión del 2026-04-09
+
+---
+
 ## Stack técnico
 
 - HTML5 + CSS3 + JavaScript vanilla (sin frameworks, sin build tools)
